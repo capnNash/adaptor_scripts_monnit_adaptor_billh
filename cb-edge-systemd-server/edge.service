@@ -1,0 +1,21 @@
+[Unit]
+Description = IoTRight Gateway Edge Service
+After=network.target
+
+[Service]
+Type = simple
+User=root
+Restart=on-abort
+TimeoutSec=30
+RestartSec=30
+StartLimitInterval=350
+StartLimitBurst=10
+ExecStart = /usr/local/bin/edge.sh start
+ExecStop = /usr/local/bin/edge.sh stop
+ExecReload = /usr/local/bin/edge.sh restart
+StandardOutput=/var/log/iotright-edge/edge.log
+StandardError=/var/log/iotright-edge/error.log
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

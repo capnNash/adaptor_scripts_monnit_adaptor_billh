@@ -1,0 +1,14 @@
+[Unit]
+Description = IoTRight Gateway EdgeConsole Service
+
+[Service]
+Type = forking
+ExecStart = /usr/local/bin/cb_console.sh start
+ExecStop = /usr/local/bin/cb_console.sh stop
+ExecReload = /usr/local/bin/cb_console.sh restart
+StandardOutput=/var/log/cbconsole.log
+StandardError=/var/log/cbconsole-error.log
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
